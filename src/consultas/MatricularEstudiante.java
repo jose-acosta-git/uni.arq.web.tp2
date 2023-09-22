@@ -20,7 +20,6 @@ public class MatricularEstudiante {
 		em.persist(tudaiFelipe);
 		
 		em.getTransaction().commit();
-		em.close();
 	}
 
 }

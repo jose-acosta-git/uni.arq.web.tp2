@@ -29,10 +29,10 @@ public class Estudiante {
 	@Column
 	private String ciudad;
 	
-	@Column
+	@Column(unique = true)
 	private int numeroLibreta;
 	
-	@OneToMany(mappedBy = "estudiante")
+	@OneToMany(mappedBy = "estudiante", fetch = FetchType.EAGER)
 	private List<Carrera_Estudiante> carreras;
 
 	public Estudiante(int dni, String nombre, String apellido, int edad, String genero, String ciudad, int numeroLibreta) {

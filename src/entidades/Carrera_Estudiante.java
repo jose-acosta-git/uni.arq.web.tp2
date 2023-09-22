@@ -75,7 +75,7 @@ public class Carrera_Estudiante {
 
 	@Override
 	public String toString() {
-		return "Carrera_Estudiante [id=" + id + ", estudiante=" + estudiante + ", carrera=" + carrera + ", ingreso="
+		return "Carrera_Estudiante [id=" + id + ", estudiante=" + estudiante.getNombre() + ", carrera=" + carrera.getNombre() + ", ingreso="
 				+ ingreso + ", egreso=" + egreso + "]";
 	}
 	
