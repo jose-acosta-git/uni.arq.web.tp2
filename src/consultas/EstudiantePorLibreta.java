@@ -15,9 +15,7 @@ public class EstudiantePorLibreta {
 		Query query = em.createQuery(jpql).setParameter(1, numeroLibreta);
 		
 		List<Estudiante> resultados = query.getResultList();
-	
 		return resultados.get(0);
-		
 	}
 
 }
