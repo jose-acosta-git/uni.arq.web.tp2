@@ -17,9 +17,11 @@ public class Main {
 		//2b
 		MatricularEstudiante.Matricular(em, felipe);
 		//2c
-		System.out.println(EstudiantesOrdenados.ObtenerEstudiantes(em));
+		EstudiantesOrdenados.ObtenerEstudiantes(em).forEach(e -> System.out.println(e));
 		//2d
 		System.out.println(EstudiantePorLibreta.ObtenerEstudiante(em, 123456));
+		//2e
+		EstudiantesPorGenero.ObtenerEstudiantes(em, "masculino").forEach(e -> System.out.println(e));
 		
 		em.close();
 		emf.close();

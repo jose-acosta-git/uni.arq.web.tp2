@@ -10,7 +10,7 @@ import entidades.Estudiante;
 public class EstudiantesOrdenados {
 	
 	public static List<Estudiante> ObtenerEstudiantes(EntityManager em) {
-		String jpql = "SELECT e FROM Estudiante e ORDER BY e.nombre ASC";
+		String jpql = "SELECT e FROM Estudiante e ORDER BY e.apellido ASC";
 		Query query = em.createQuery(jpql);
 		
 		List<Estudiante> resultados = query.getResultList();
