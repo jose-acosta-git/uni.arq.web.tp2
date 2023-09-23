@@ -10,14 +10,11 @@ import entidades.Estudiante;
 
 public class MatricularEstudiante {
 	
-	public static void Matricular(EntityManager em, Estudiante felipe) {
+	public static void Matricular(EntityManager em, Estudiante felipe, Carrera carrera) {
 		em.getTransaction().begin();
 		
-		Carrera tudai = new Carrera("TUDAI");
-		em.persist(tudai);
-		
-		Carrera_Estudiante tudaiFelipe = new Carrera_Estudiante(felipe, tudai, LocalDate.now(), null);
-		em.persist(tudaiFelipe);
+		Carrera_Estudiante ce = new Carrera_Estudiante(felipe, carrera, LocalDate.now(), null);
+		em.persist(ce);
 		
 		em.getTransaction().commit();
 	}
