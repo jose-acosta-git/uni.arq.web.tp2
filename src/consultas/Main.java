@@ -32,14 +32,14 @@ public class Main {
 		persistirCarreras(tudai, licMat, em);
 		persistirCarreras(profeIng, profeLit, em);
 		
-		MatricularEstudiante.Matricular(em, felipe, tudai);
-		MatricularEstudiante.Matricular(em, juan, licMat);
-		MatricularEstudiante.Matricular(em, maria, tudai);
-		MatricularEstudiante.Matricular(em, carmen, profeIng);
-		MatricularEstudiante.Matricular(em, carmen, profeLit);
-		MatricularEstudiante.Matricular(em, miguel, licMat);
-		MatricularEstudiante.Matricular(em, carlos, tudai);
-		MatricularEstudiante.Matricular(em, isabel, profeLit);
+		MatricularEstudiante.Matricular(em, felipe, tudai, 2, 5);
+		MatricularEstudiante.Matricular(em, juan, licMat, 2, 0);
+		MatricularEstudiante.Matricular(em, maria, tudai, 5, 1);
+		MatricularEstudiante.Matricular(em, carmen, profeIng, 4, 0);
+		MatricularEstudiante.Matricular(em, carmen, profeLit, 0, 0);
+		MatricularEstudiante.Matricular(em, miguel, licMat, 5, 2);
+		MatricularEstudiante.Matricular(em, carlos, tudai, 5, 0);
+		MatricularEstudiante.Matricular(em, isabel, profeLit, 5, 1);
 		
 		em.close();
 		em = emf.createEntityManager();
@@ -63,6 +63,10 @@ public class Main {
 		//2g
 		System.out.println("\n******** Estudiantes de la carrera TUDAI, que residen en Tres Arroyos: ********\n");
 		EstudiantesDeUnaCarrera.ObtenerEstudiantes(em, "TUDAI", "Tres Arroyos").forEach(e -> System.out.println(e));
+		
+		//3
+		System.out.println("\n******** Reporte de carreras: ********\n");
+		ReporteDeCarreras.ObtenerReporte(em).forEach(e -> System.out.println(e));
 		
 		em.close();
 		emf.close();
