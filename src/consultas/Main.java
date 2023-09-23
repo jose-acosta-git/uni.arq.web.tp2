@@ -15,7 +15,7 @@ public class Main {
 		//2a
 		Estudiante felipe = AltaEstudiantes.DarAltaEstudiantes(em, 50123123, "Felipe", "Morales", 28, "masculino", "Tres Arroyos", 123456);
 		Estudiante juan = AltaEstudiantes.DarAltaEstudiantes(em, 60123123, "Juan", "Fernandez", 23, "masculino", "Tandil", 234567);
-		Estudiante maria = AltaEstudiantes.DarAltaEstudiantes(em, 70123123, "Maria", "Gonzales", 21, "femenino", "Azul", 345678);
+		Estudiante maria = AltaEstudiantes.DarAltaEstudiantes(em, 70123123, "Maria", "Gonzales", 21, "femenino", "Tres Arroyos", 345678);
 		
 		//2b
 		Carrera tudai = new Carrera("TUDAI");
@@ -37,6 +37,9 @@ public class Main {
 		
 		//2f
 		CarrerasConInscriptosOrdenadas.ObtenerCarreras(em).forEach(c -> System.out.println("Carrera:" + c[0] + " Inscriptos:" + c[1]));
+		
+		//2g
+		EstudiantesDeUnaCarrera.ObtenerEstudiantes(em, "TUDAI", "Tres Arroyos").forEach(e -> System.out.println(e));
 		
 		em.close();
 		emf.close();
