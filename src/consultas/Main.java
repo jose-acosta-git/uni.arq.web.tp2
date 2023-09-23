@@ -16,15 +16,30 @@ public class Main {
 		Estudiante felipe = AltaEstudiantes.DarAltaEstudiantes(em, 50123123, "Felipe", "Morales", 28, "masculino", "Tres Arroyos", 123456);
 		Estudiante juan = AltaEstudiantes.DarAltaEstudiantes(em, 60123123, "Juan", "Fernandez", 23, "masculino", "Tandil", 234567);
 		Estudiante maria = AltaEstudiantes.DarAltaEstudiantes(em, 70123123, "Maria", "Gonzales", 21, "femenino", "Azul", 345678);
+		Estudiante carmen = AltaEstudiantes.DarAltaEstudiantes(em, 61121683, "Carmen", "García", 30, "femenino", "Tres Arroyos", 2316267);
+		Estudiante miguel = AltaEstudiantes.DarAltaEstudiantes(em, 10143829, "Miguel", "Torres", 25, "masculino", "Bahia Blanca", 508709);
+		Estudiante carlos = AltaEstudiantes.DarAltaEstudiantes(em, 71216198, "Carlos", "Pérez", 53, "masculino", "Tandil", 206568);
+		Estudiante isabel = AltaEstudiantes.DarAltaEstudiantes(em, 90523823, "Isabel", "Fernández", 29, "femenino", "Azul", 396698);
 		
 		//2b
 		Carrera tudai = new Carrera("TUDAI");
 		Carrera licMat = new Carrera("Lic en Matematicas");
+		Carrera profeIng = new Carrera("Profesorado de ingles");
+		Carrera profeLit = new Carrera("Profesorado de literatura");
+		
 		persistirCarreras(tudai, licMat, em);
+		persistirCarreras(profeIng, profeLit, em);
 		
 		MatricularEstudiante.Matricular(em, felipe, tudai);
 		MatricularEstudiante.Matricular(em, juan, licMat);
 		MatricularEstudiante.Matricular(em, maria, tudai);
+		
+		MatricularEstudiante.Matricular(em, carmen, profeIng);
+		MatricularEstudiante.Matricular(em, carmen, profeLit);
+		MatricularEstudiante.Matricular(em, miguel, licMat);
+		MatricularEstudiante.Matricular(em, carlos, tudai);
+		MatricularEstudiante.Matricular(em, isabel, profeLit);
+		
 		
 		//2c
 		EstudiantesOrdenados.ObtenerEstudiantes(em).forEach(e -> System.out.println(e));
