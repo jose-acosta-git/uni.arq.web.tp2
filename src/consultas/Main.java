@@ -13,6 +13,7 @@ public class Main {
 		EntityManager em = emf.createEntityManager();
 
 		//2a
+		System.out.println("\n******** Alta de estudiantes: ********\n");
 		Estudiante felipe = AltaEstudiantes.DarAltaEstudiantes(em, 50123123, "Felipe", "Morales", 28, "masculino", "Tres Arroyos", 123456);
 		Estudiante juan = AltaEstudiantes.DarAltaEstudiantes(em, 60123123, "Juan", "Fernandez", 23, "masculino", "Tandil", 234567);
 		Estudiante maria = AltaEstudiantes.DarAltaEstudiantes(em, 70123123, "Maria", "Gonzales", 21, "femenino", "Tres Arroyos", 345678);
@@ -22,6 +23,7 @@ public class Main {
 		Estudiante isabel = AltaEstudiantes.DarAltaEstudiantes(em, 90523823, "Isabel", "Fernández", 29, "femenino", "Azul", 396698);
 
 		//2b
+		System.out.println("\n******** Alta de carreras y matriculaciones: ********\n");
 		Carrera tudai = new Carrera("TUDAI");
 		Carrera licMat = new Carrera("Lic en Matematicas");
 		Carrera profeIng = new Carrera("Profesorado de ingles");
@@ -33,27 +35,33 @@ public class Main {
 		MatricularEstudiante.Matricular(em, felipe, tudai);
 		MatricularEstudiante.Matricular(em, juan, licMat);
 		MatricularEstudiante.Matricular(em, maria, tudai);
-		
 		MatricularEstudiante.Matricular(em, carmen, profeIng);
 		MatricularEstudiante.Matricular(em, carmen, profeLit);
 		MatricularEstudiante.Matricular(em, miguel, licMat);
 		MatricularEstudiante.Matricular(em, carlos, tudai);
 		MatricularEstudiante.Matricular(em, isabel, profeLit);
 		
+		em.close();
+		em = emf.createEntityManager();
 		
 		//2c
+		System.out.println("\n******** Estudiantes ordenados por apellido: ********\n");
 		EstudiantesOrdenados.ObtenerEstudiantes(em).forEach(e -> System.out.println(e));
 		
 		//2d
+		System.out.println("\n******** Estudiante de libreta 123456: ********\n");
 		System.out.println(EstudiantePorLibreta.ObtenerEstudiante(em, 123456));
 		
 		//2e
+		System.out.println("\n******** Estudiantes de género masculino: ********\n");
 		EstudiantesPorGenero.ObtenerEstudiantes(em, "masculino").forEach(e -> System.out.println(e));
 		
 		//2f
-		CarrerasConInscriptosOrdenadas.ObtenerCarreras(em).forEach(c -> System.out.println("Carrera:" + c[0] + " Inscriptos:" + c[1]));
+		System.out.println("\n******** Carreras con inscriptos, ordenadas por cantidad de inscriptos: ********\n");
+		CarrerasConInscriptosOrdenadas.ObtenerCarreras(em).forEach(c -> System.out.println(c));
 		
 		//2g
+		System.out.println("\n******** Estudiantes de la carrera TUDAI, que residen en Tres Arroyos: ********\n");
 		EstudiantesDeUnaCarrera.ObtenerEstudiantes(em, "TUDAI", "Tres Arroyos").forEach(e -> System.out.println(e));
 		
 		em.close();

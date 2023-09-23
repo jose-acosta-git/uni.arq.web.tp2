@@ -14,7 +14,7 @@ public class Carrera {
 	@Column
 	private String nombre;
 	
-	@OneToMany(mappedBy = "carrera")
+	@OneToMany(mappedBy = "carrera", fetch = FetchType.EAGER)
 	private List<Carrera_Estudiante> estudiantes;
 
 	public Carrera(String nombre) {
