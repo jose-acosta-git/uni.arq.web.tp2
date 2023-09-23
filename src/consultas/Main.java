@@ -12,8 +12,13 @@ public class Main {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("MySQL");
 		EntityManager em = emf.createEntityManager();
 
-		Estudiante felipe = AltaEstudiante.DarAltaEstudiante(em);
+		//2a
+		Estudiante felipe = AltaEstudiantes.DarAltaEstudiantes(em);
+		//2b
 		MatricularEstudiante.Matricular(em, felipe);
+		//2c
+		System.out.println(EstudiantesOrdenados.ObtenerEstudiantes(em));
+		//2d
 		System.out.println(EstudiantePorLibreta.ObtenerEstudiante(em, 123456));
 		
 		em.close();
