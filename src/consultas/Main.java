@@ -119,10 +119,10 @@ public class Main {
 		System.out.println("\n******** Estudiante de libreta 123456: ********\n");
 		System.out.println(estudianteRepository.obtenerPorLibreta(123456));
 		
-//		//2e
-//		System.out.println("\n******** Estudiantes de género masculino: ********\n");
-//		EstudiantesPorGenero.ObtenerEstudiantes(em, "masculino").forEach(e -> System.out.println(e));
-//		
+		//2e
+		System.out.println("\n******** Estudiantes de género masculino: ********\n");
+		estudianteRepository.obtenerPorGenero("masculino").forEach(e -> System.out.println(e));
+		
 //		//2f
 //		System.out.println("\n******** Carreras con inscriptos, ordenadas por cantidad de inscriptos: ********\n");
 //		CarrerasConInscriptosOrdenadas.ObtenerCarreras(em).forEach(c -> System.out.println(c));

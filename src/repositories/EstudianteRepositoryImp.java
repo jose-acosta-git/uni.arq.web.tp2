@@ -58,4 +58,12 @@ public class EstudianteRepositoryImp implements EstudianteRepository {
 		return resultados.get(0);
 	}
 
+	@Override
+	public List<Estudiante> obtenerPorGenero(String genero) {
+		String jpql = "SELECT e FROM Estudiante e WHERE e.genero = ?1";
+		Query query = em.createQuery(jpql).setParameter(1, genero);
+		
+		return query.getResultList();
+	}
+
 }
