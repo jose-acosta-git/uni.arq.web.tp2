@@ -33,6 +33,11 @@ public class RepositoryFactory {
 		return entityManager;
 	}
 	
+	public static void reiniciarConexion() {
+		RepositoryFactory.getEntityManager().close();
+		entityManager = entityManagerFactory.createEntityManager();
+	}
+	
 	public static void cerrarConexion() {
 		RepositoryFactory.getEntityManager().close();
 		RepositoryFactory.getEntityManagerFactory().close();

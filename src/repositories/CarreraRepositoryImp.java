@@ -8,11 +8,11 @@ import javax.persistence.Query;
 
 import dtos.CarreraDto;
 import dtos.CarreraInscriptosDto;
+import dtos.ReporteCarrerasDto;
 import entidades.Carrera;
 
 public class CarreraRepositoryImp implements CarreraRepository {
 	
-	private EntityManager em = RepositoryFactory.getEntityManager();
 	public static CarreraRepositoryImp instance = new CarreraRepositoryImp();
 	
 	private CarreraRepositoryImp() { }
@@ -35,9 +35,9 @@ public class CarreraRepositoryImp implements CarreraRepository {
 
 	@Override
 	public Carrera guardar(Carrera entity) {
-		em.getTransaction().begin();
-		em.persist(entity);
-		em.getTransaction().commit();
+		RepositoryFactory.getEntityManager().getTransaction().begin();
+		RepositoryFactory.getEntityManager().persist(entity);
+		RepositoryFactory.getEntityManager().getTransaction().commit();
 		return entity;
 	}
 
@@ -55,7 +55,7 @@ public class CarreraRepositoryImp implements CarreraRepository {
 				+ "JOIN c.estudiantes ce "
 				+ "GROUP BY c.nombre "
 				+ "ORDER BY COUNT(ce) DESC";
-		Query query = em.createQuery(jpql);
+		Query query = RepositoryFactory.getEntityManager().createQuery(jpql);
 		List<Object[]> resultados = query.getResultList();
 		
 		List<CarreraInscriptosDto> dtos = new ArrayList<>();
@@ -64,6 +64,32 @@ public class CarreraRepositoryImp implements CarreraRepository {
 		);
 		
 		return dtos;
+	}
+
+	@Override
+	public List<ReporteCarrerasDto> obtenerReporteCarreras() {
+		String jpql = 
+				"SELECT c.nombre AS Carrera, " +
+			    "FUNCTION('YEAR', ce.ingreso) AS Anio, " +
+			    "COUNT(ce.id) AS Inscriptos, " +
+			    "COUNT(CASE WHEN ce.egreso IS NOT NULL THEN 1 ELSE NULL END) AS Egresados " +
+			    "FROM Carrera c " +
+			    "LEFT JOIN c.estudiantes ce " +
+			    "GROUP BY c.nombre, Anio " +
+			    "ORDER BY c.nombre ASC, Anio ASC";
+		Query query = RepositoryFactory.getEntityManager().createQuery(jpql);
+		
+		List<Object[]> resultados = query.getResultList();
+		List<ReporteCarrerasDto> reporte = new ArrayList<>();
+		
+		resultados.forEach(c -> {
+		    String nombreCarrera = c[0].toString();
+		    Integer anio =  (Integer) (c[1]);
+		    Long inscriptos =  (Long) c[2];
+		    Long egresados =  (Long) c[3];
+		    reporte.add(new ReporteCarrerasDto(nombreCarrera, anio, inscriptos.intValue(), egresados.intValue()));
+		});
+		return reporte;
 	}
 
 }

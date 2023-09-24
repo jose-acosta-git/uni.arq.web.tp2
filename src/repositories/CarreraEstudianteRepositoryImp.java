@@ -8,7 +8,6 @@ import entidades.Carrera_Estudiante;
 
 public class CarreraEstudianteRepositoryImp implements CarreraEstudianteRepository{
 
-	private EntityManager em = RepositoryFactory.getEntityManager();
 	public static CarreraEstudianteRepositoryImp instance = new CarreraEstudianteRepositoryImp();
 	
 	private CarreraEstudianteRepositoryImp() { }
@@ -31,9 +30,9 @@ public class CarreraEstudianteRepositoryImp implements CarreraEstudianteReposito
 
 	@Override
 	public Carrera_Estudiante guardar(Carrera_Estudiante entity) {
-		em.getTransaction().begin();
-		em.persist(entity);
-		em.getTransaction().commit();
+		RepositoryFactory.getEntityManager().getTransaction().begin();
+		RepositoryFactory.getEntityManager().persist(entity);
+		RepositoryFactory.getEntityManager().getTransaction().commit();
 		return entity;
 	}
 

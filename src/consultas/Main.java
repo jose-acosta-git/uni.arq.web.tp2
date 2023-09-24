@@ -19,8 +19,6 @@ public class Main {
 
 	public static void main(String[] args) {
 		RepositoryFactory rf = RepositoryFactory.getInstance("MySQL");
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("MySQL");
-		EntityManager em = emf.createEntityManager();
 
 		//2a
 		System.out.println("\n******** Alta de estudiantes: ********\n");
@@ -111,6 +109,8 @@ public class Main {
 		carreraEstudianteRepository.guardar(ingresoLuis);
 		carreraEstudianteRepository.guardar(ingresoAna);
 		
+		RepositoryFactory.reiniciarConexion();
+		
 		//2c
 		System.out.println("\n******** Estudiantes ordenados por apellido: ********\n");
 		estudianteRepository.obtenerTodos().forEach(e -> System.out.println(e));
@@ -133,9 +133,6 @@ public class Main {
 		
 		//3
 		System.out.println("\n******** Reporte de carreras: ********\n");
-		ReporteDeCarreras.ObtenerReporte(em).forEach(e -> System.out.println(e));
-		
-		em.close();
-		emf.close();
+		carreraRepository.obtenerReporteCarreras().forEach(e -> System.out.println(e));
 	}
 }

@@ -11,7 +11,6 @@ import entidades.Estudiante;
 
 public class EstudianteRepositoryImp implements EstudianteRepository {
 	
-	private EntityManager em = RepositoryFactory.getEntityManager();
 	public static EstudianteRepositoryImp instance = new EstudianteRepositoryImp();
 	
 	private EstudianteRepositoryImp() { }
@@ -29,7 +28,7 @@ public class EstudianteRepositoryImp implements EstudianteRepository {
 	@Override
 	public List<Estudiante> obtenerTodos() {
 		String jpql = "SELECT e FROM Estudiante e ORDER BY e.apellido ASC";
-		Query query = em.createQuery(jpql);
+		Query query = RepositoryFactory.getEntityManager().createQuery(jpql);
 		
 		List<Estudiante> resultados = query.getResultList();
 		return resultados;
@@ -37,9 +36,9 @@ public class EstudianteRepositoryImp implements EstudianteRepository {
 
 	@Override
 	public Estudiante guardar(Estudiante entity) {
-		em.getTransaction().begin();
-		em.persist(entity);
-		em.getTransaction().commit();
+		RepositoryFactory.getEntityManager().getTransaction().begin();
+		RepositoryFactory.getEntityManager().persist(entity);
+		RepositoryFactory.getEntityManager().getTransaction().commit();
 		return entity;
 	}
 
@@ -52,7 +51,7 @@ public class EstudianteRepositoryImp implements EstudianteRepository {
 	@Override
 	public Estudiante obtenerPorLibreta(int numeroLibreta) {
 		String jpql = "SELECT e FROM Estudiante e WHERE e.numeroLibreta = ?1";
-		Query query = em.createQuery(jpql).setParameter(1, numeroLibreta);
+		Query query = RepositoryFactory.getEntityManager().createQuery(jpql).setParameter(1, numeroLibreta);
 		
 		List<Estudiante> resultados = query.getResultList();
 		return resultados.get(0);
@@ -61,7 +60,7 @@ public class EstudianteRepositoryImp implements EstudianteRepository {
 	@Override
 	public List<Estudiante> obtenerPorGenero(String genero) {
 		String jpql = "SELECT e FROM Estudiante e WHERE e.genero = ?1";
-		Query query = em.createQuery(jpql).setParameter(1, genero);
+		Query query = RepositoryFactory.getEntityManager().createQuery(jpql).setParameter(1, genero);
 		
 		return query.getResultList();
 	}
@@ -74,7 +73,7 @@ public class EstudianteRepositoryImp implements EstudianteRepository {
 				+ "JOIN e.carreras c "
 				+ "WHERE c.carrera.nombre = ?1 "
 				+ "AND e.ciudad = ?2 ";
-		Query query = em.createQuery(jpql).setParameter(1, carrera).setParameter(2, ciudad);
+		Query query = RepositoryFactory.getEntityManager().createQuery(jpql).setParameter(1, carrera).setParameter(2, ciudad);
 		
 		return query.getResultList();
 	}
