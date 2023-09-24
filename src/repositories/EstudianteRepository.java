@@ -1,7 +1,7 @@
 package repositories;
 
-import dtos.EstudianteDto;
+import entidades.Estudiante;
 
-public interface EstudianteRepository extends BaseRepository<EstudianteDto, Integer> {
+public interface EstudianteRepository extends BaseRepository<Estudiante, Integer> {
 	
 }

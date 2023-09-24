@@ -1,7 +1,7 @@
 package repositories;
 
-import dtos.CarreraDto;
+import entidades.Carrera;
 
-public interface CarreraRepository extends BaseRepository<CarreraDto, Integer> {
+public interface CarreraRepository extends BaseRepository<Carrera, Integer> {
 
 }

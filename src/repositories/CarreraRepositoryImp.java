@@ -19,28 +19,27 @@ public class CarreraRepositoryImp implements CarreraRepository {
 	}
 
 	@Override
-	public CarreraDto obtenerPorId(Integer id) {
+	public Carrera obtenerPorId(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<CarreraDto> obtenerTodos() {
+	public List<Carrera> obtenerTodos() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public CarreraDto guardar(CarreraDto dto) {
-		Carrera c = new Carrera(dto.getNombre());
+	public Carrera guardar(Carrera entity) {
 		em.getTransaction().begin();
-		em.persist(c);
+		em.persist(entity);
 		em.getTransaction().commit();
-		return dto;
+		return entity;
 	}
 
 	@Override
-	public void eliminar(CarreraDto dto) {
+	public void eliminar(Carrera entity) {
 		// TODO Auto-generated method stub
 		
 	}

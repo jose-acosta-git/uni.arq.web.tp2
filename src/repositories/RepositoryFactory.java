@@ -46,7 +46,7 @@ public class RepositoryFactory {
 		return CarreraRepositoryImp.getInstance();
 	}
 	
-//	public static CarreraEstudianteRepositoryImp getCarreraEquipoRepository() {
-//		return CarreraEstudianteRepositoryImp.getInstance();
-//	}
+	public static CarreraEstudianteRepositoryImp getCarreraEstudianteRepository() {
+		return CarreraEstudianteRepositoryImp.getInstance();
+	}
 }

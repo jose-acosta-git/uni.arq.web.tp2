@@ -19,28 +19,27 @@ public class EstudianteRepositoryImp implements EstudianteRepository {
 	}
 
 	@Override
-	public EstudianteDto obtenerPorId(Integer id) {
+	public Estudiante obtenerPorId(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<EstudianteDto> obtenerTodos() {
+	public List<Estudiante> obtenerTodos() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public EstudianteDto guardar(EstudianteDto dto) {
-		Estudiante e = new Estudiante(dto.getDni(), dto.getNombre(), dto.getApellido(), dto.getEdad(), dto.getGenero(), dto.getCiudad(), dto.getNumeroLibreta());
+	public Estudiante guardar(Estudiante entity) {
 		em.getTransaction().begin();
-		em.persist(e);
+		em.persist(entity);
 		em.getTransaction().commit();
-		return dto;
+		return entity;
 	}
 
 	@Override
-	public void eliminar(EstudianteDto dto) {
+	public void eliminar(Estudiante entity) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -6,6 +6,6 @@ public interface BaseRepository<T, ID> {
 	
 	T obtenerPorId(ID id);
 	List<T> obtenerTodos();
-	T guardar(T dto);
-	void eliminar(T dto);
+	T guardar(T entity);
+	void eliminar(T entity);
 }
