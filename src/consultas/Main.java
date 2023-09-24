@@ -115,10 +115,10 @@ public class Main {
 		System.out.println("\n******** Estudiantes ordenados por apellido: ********\n");
 		estudianteRepository.obtenerTodos().forEach(e -> System.out.println(e));
 		
-//		//2d
-//		System.out.println("\n******** Estudiante de libreta 123456: ********\n");
-//		System.out.println(EstudiantePorLibreta.ObtenerEstudiante(em, 123456));
-//		
+		//2d
+		System.out.println("\n******** Estudiante de libreta 123456: ********\n");
+		System.out.println(estudianteRepository.obtenerPorLibreta(123456));
+		
 //		//2e
 //		System.out.println("\n******** Estudiantes de género masculino: ********\n");
 //		EstudiantesPorGenero.ObtenerEstudiantes(em, "masculino").forEach(e -> System.out.println(e));

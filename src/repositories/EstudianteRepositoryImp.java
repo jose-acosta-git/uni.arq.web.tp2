@@ -49,4 +49,13 @@ public class EstudianteRepositoryImp implements EstudianteRepository {
 		
 	}
 
+	@Override
+	public Estudiante obtenerPorLibreta(int numeroLibreta) {
+		String jpql = "SELECT e FROM Estudiante e WHERE e.numeroLibreta = ?1";
+		Query query = em.createQuery(jpql).setParameter(1, numeroLibreta);
+		
+		List<Estudiante> resultados = query.getResultList();
+		return resultados.get(0);
+	}
+
 }
