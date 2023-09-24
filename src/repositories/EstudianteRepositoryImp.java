@@ -66,4 +66,17 @@ public class EstudianteRepositoryImp implements EstudianteRepository {
 		return query.getResultList();
 	}
 
+	@Override
+	public List<Estudiante> obtenerPorCarreraYCiudad(String carrera, String ciudad) {
+		String jpql =
+				"SELECT e "
+				+ "FROM Estudiante e "
+				+ "JOIN e.carreras c "
+				+ "WHERE c.carrera.nombre = ?1 "
+				+ "AND e.ciudad = ?2 ";
+		Query query = em.createQuery(jpql).setParameter(1, carrera).setParameter(2, ciudad);
+		
+		return query.getResultList();
+	}
+
 }

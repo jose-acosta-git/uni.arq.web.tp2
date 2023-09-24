@@ -127,11 +127,11 @@ public class Main {
 		System.out.println("\n******** Carreras con inscriptos, ordenadas por cantidad de inscriptos: ********\n");
 		carreraRepository.obtenerCarrerasInscriptos().forEach(c -> System.out.println(c));
 		
-//		//2g
-//		System.out.println("\n******** Estudiantes de la carrera TUDAI, que residen en Tres Arroyos: ********\n");
-//		EstudiantesDeUnaCarrera.ObtenerEstudiantes(em, "TUDAI", "Tres Arroyos").forEach(e -> System.out.println(e));
-//		
-//		//3
+		//2g
+		System.out.println("\n******** Estudiantes de la carrera TUDAI, que residen en Tres Arroyos: ********\n");
+		estudianteRepository.obtenerPorCarreraYCiudad("TUDAI", "Tres Arroyos").forEach(e -> System.out.println(e));
+		
+		//3
 		System.out.println("\n******** Reporte de carreras: ********\n");
 		ReporteDeCarreras.ObtenerReporte(em).forEach(e -> System.out.println(e));
 		
