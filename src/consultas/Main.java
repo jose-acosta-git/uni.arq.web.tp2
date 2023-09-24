@@ -112,9 +112,9 @@ public class Main {
 		carreraEstudianteRepository.guardar(ingresoAna);
 		
 		//2c
-//		System.out.println("\n******** Estudiantes ordenados por apellido: ********\n");
-//		EstudiantesOrdenados.ObtenerEstudiantes(em).forEach(e -> System.out.println(e));
-//		
+		System.out.println("\n******** Estudiantes ordenados por apellido: ********\n");
+		estudianteRepository.obtenerTodos().forEach(e -> System.out.println(e));
+		
 //		//2d
 //		System.out.println("\n******** Estudiante de libreta 123456: ********\n");
 //		System.out.println(EstudiantePorLibreta.ObtenerEstudiante(em, 123456));
